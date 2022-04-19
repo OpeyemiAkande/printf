@@ -8,12 +8,8 @@
  */
 int main(void)
 {
-	int n = 0;
+	_printf("Hello %s\n", "World");
 
-   	n =  _printf("%%\n");
-	printf("%d\n", n);
-
-    	n = printf("%%\n");
-	printf("%d\n", n);
+	printf("Hello %s\n", "World");
     	return (0);
 }

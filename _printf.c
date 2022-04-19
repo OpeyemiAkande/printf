@@ -12,7 +12,7 @@
 int _printf(const char * const format, ...)
 {
 	va_list args;
-	int i = 0, n_displayed = 0, k = 0, ;
+	int i = 0, n_displayed = 0, k = 0, num = 0;
 	char *s = NULL;
 
 	va_start(args, format);
@@ -28,29 +28,38 @@ int _printf(const char * const format, ...)
 		{
 			if (format[i + 1] == 'c')
 			{
-				_putchar(va_arg(args, int));
+				/* call print_char */
+				print_char(va_arg(args, int));
 				n_displayed += 1;
 				i++;
 			}
 			else if (format[i + 1] == 's')
 			{
+				/* call print_str */
 				s = va_arg(args, char *);
-				for (k = 0; s[k]; k++)
-				{
-					_putchar(s[k]);
-					n_displayed += 1;
-				}
+				print_str(s);
 				i++;
 			}
 			else if (format[i + 1] == '%')
 			{
-				_putchar('%');
+				/* call print_char */
+				_putchar('%'));
 				n_displayed += 1;
 				i++;
 			}
 			else if (format[i + 1] == 'd')
 			{
+				/* call print_int(num) */
+				i++;
 				num = va_arg(args, int);
+
+				while (num > 0)
+				{
+					_putchar('0' + (num % 10));
+					num /= 10;
+					n_displayed++;
+				}
+			}
 		}
 
 		i++;
