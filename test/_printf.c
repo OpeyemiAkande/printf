@@ -26,40 +26,9 @@ int _printf(const char * const format, ...)
 		}
 		else 
 		{
-			if (format[i + 1] == 'c')
-			{
-				/* call print_char */
-				print_char(va_arg(args, int));
-				n_displayed += 1;
-				i++;
-			}
-			else if (format[i + 1] == 's')
-			{
-				/* call print_str */
-				s = va_arg(args, char *);
-				print_str(s);
-				i++;
-			}
-			else if (format[i + 1] == '%')
-			{
-				/* call print_char */
-				_putchar('%'));
-				n_displayed += 1;
-				i++;
-			}
-			else if (format[i + 1] == 'd')
-			{
-				/* call print_int(num) */
-				i++;
-				num = va_arg(args, int);
-
-				while (num > 0)
-				{
-					_putchar('0' + (num % 10));
-					num /= 10;
-					n_displayed++;
-				}
-			}
+			_select_func(format[i + 1])(args);
+			i++;
+			n_displayed++;
 		}
 
 		i++;
